@@ -1,0 +1,6 @@
+---
+- name: debian | Installing cloud-init
+  apt:
+    name: cloud-init
+    state: present
+  become: true

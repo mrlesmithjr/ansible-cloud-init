@@ -1,0 +1,26 @@
+---
+- name: config | Capturing cloud-init status
+  shell: cloud-init status | cut -f 2 -d ':'
+  become: true
+  register: _cloud_init_status
+
+- name: config | Displaying cloud-init status
+  debug:
+    var: _cloud_init_status['stdout']
+
+- name: config | Deleting /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+  file:
+    path: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+    state: absent
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: config | Configuring config.cfg
+  template:
+    src: etc/cloud/cloud.cfg.j2
+    dest: /etc/cloud/cloud.cfg
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  become: true
+  when: cloud_init_config
