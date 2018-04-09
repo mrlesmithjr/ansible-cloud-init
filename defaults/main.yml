@@ -2,24 +2,24 @@
 # defaults file for ansible-cloud-init
 
 # Defines if cloud-init is configured
-cloud_init_config: false
+cloud_init_config:        false
 
 # Defines the cloud-init configuration which is converted to YAML via template
 cloud_init_configuration:
   # Add groups to the system
   # The following example adds the ubuntu group with members 'root' and 'sys'
   # and the empty group cloud-users.
-  groups: []
+  groups:                 []
     # - cloud-users
 
   # A set of users which may be applied and/or used by various modules
   # when a 'default' entry is found it will reference the 'default_user'
   # from the distro configuration specified below
-  users: []
+  users:                  []
     # - default
-    # - name: ubuntu
-    #   lock_passwd: true
-    #   gecos: Ubuntu
+    # - name:             ubuntu
+    #   lock_passwd:      true
+    #   gecos:            Ubuntu
     #   groups:
     #     - adm
     #     - audio
@@ -32,16 +32,16 @@ cloud_init_configuration:
     #     - plugdev
     #     - sudo
     #     - video
-    #   sudo: "ALL=(ALL) NOPASSWD:ALL"
-    #   shell: /bin/bash
+    #   sudo:             "ALL=(ALL) NOPASSWD:ALL"
+    #   shell:            /bin/bash
     #   ssh_authorized_keys: []
 
   # If this is set, 'root' will not be able to ssh in and they
   # will get a message to login instead as the default $user
-  # disable_root: true
+  # disable_root:         true
 
   # This will cause the set+update hostname module to not operate (if true)
-  # preserve_hostname: false
+  # preserve_hostname:    false
 
   datasource_list:
     # - Azure
@@ -52,16 +52,16 @@ cloud_init_configuration:
     - None
     # - OpenStack
 
-  datasource: []
+  datasource:             []
     # Ec2:
-    #   metadata_urls: [ 'blah.com' ]
-    #   timeout: 5 # (defaults to 50 seconds)
-    #   max_wait: 10 # (defaults to 120 seconds)
+    #   metadata_urls:    [ 'blah.com' ]
+    #   timeout:          5 # (defaults to 50 seconds)
+    #   max_wait:         10 # (defaults to 120 seconds)
     # OpenStack:
-    #   metadata_urls: ["http://169.254.169.254"]
-    #   max_wait: -1
-    #   timeout: 10
-    #   retries: 5
+    #   metadata_urls:    ["http://169.254.169.254"]
+    #   max_wait:         -1
+    #   timeout:          10
+    #   retries:          5
 
   # The modules that run in the 'init' stage
   cloud_init_modules:
@@ -122,11 +122,11 @@ cloud_init_configuration:
    - final-message
    - power-state-change
 
-  # manage_etc_hosts: false
+  # manage_etc_hosts:     false
 
-  # manage_resolv_conf: false
+  # manage_resolv_conf:   false
 
-  packages: []
+  packages:               []
     # - build-essential
     # - python-minimal
     # - libffi-dev
@@ -142,7 +142,7 @@ cloud_init_configuration:
   #   searchdomains:
   #     - foo.example.com
   #     - bar.example.com
-  #   domain: example.com
+  #   domain:             example.com
   #   options:
-  #     rotate: true
-  #     timeout: 1
+  #     rotate:           true
+  #     timeout:          1
