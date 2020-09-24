@@ -9,11 +9,17 @@
     - /etc/cloud/cloud.cfg.d/99-installer.cfg
   when: ansible_os_family == "Debian"
 
+- name: clean | Check For Existing /var/log/cloud-init.log
+  stat:
+    path: /var/log/cloud-init.log
+  register: _cloud_init_log
+
 - name: clean | Cleaning Up cloud-init
   block:
     - name: clean | Attempting cloud-init clean
       command: cloud-init clean -s -l
       become: true
+      when: _cloud_init_log.stat.exists|bool
 
   rescue:
     - name: clean | Cleaning up cloud-init manually
