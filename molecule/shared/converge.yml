@@ -1,6 +1,9 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    cloud_init_clean: true
+    cloud_init_config: true
   tasks:
     - name: Include ansible-cloud-init
       include_role:
