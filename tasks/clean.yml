@@ -1,0 +1,27 @@
+---
+- name: clean | Cleaning Up Ubuntu cloud-init
+  file:
+    path: "{{ item }}"
+    state: absent
+  become: true
+  loop:
+    - /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+    - /etc/cloud/cloud.cfg.d/99-installer.cfg
+  when: ansible_os_family == "Debian"
+
+- name: clean | Cleaning Up cloud-init
+  block:
+    - name: clean | Attempting cloud-init clean
+      command: cloud-init clean -s -l
+      become: true
+
+  rescue:
+    - name: clean | Cleaning up cloud-init manually
+      file:
+        path: "{{ item }}"
+        state: absent
+      become: true
+      loop:
+        - /var/lib/cloud/instances
+        - /var/log/cloud-init.log
+        - /var/log/cloud-init-output.log
