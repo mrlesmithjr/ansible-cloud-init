@@ -1,11 +1,13 @@
 ---
 # tasks file for ansible-cloud-init
-- include_tasks: install.yml
+- ansible.builtin.include_tasks: prepare.yml
 
-- include_tasks: config.yml
+- ansible.builtin.include_tasks: install.yml
+
+- ansible.builtin.include_tasks: config.yml
   when: cloud_init_config|bool
 
-- include_tasks: clean.yml
+- ansible.builtin.include_tasks: clean.yml
   when: cloud_init_clean|bool
 
-- include_tasks: service.yml
+- ansible.builtin.include_tasks: service.yml

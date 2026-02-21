@@ -152,3 +152,5 @@ cloud_init_configuration:
   #   options:
   #     rotate:           true
   #     timeout:          1
+
+__cloud_init_service_name: "cloud-init.service"
