@@ -172,7 +172,7 @@ tabulate==0.8.7
     # via molecule
 text-unidecode==1.3
     # via python-slugify
-tornado==6.0.4
+tornado==6.5.5
     # via
     #   livereload
     #   mkdocs
