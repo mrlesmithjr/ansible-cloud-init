@@ -85,7 +85,7 @@ livereload==2.6.3
     # via mkdocs
 lunr[languages]==0.5.8
     # via mkdocs
-markdown==3.2.2
+markdown==3.8.1
     # via mkdocs
 markupsafe==1.1.1
     # via
