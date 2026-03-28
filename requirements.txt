@@ -119,7 +119,7 @@ pycparser==2.20
     # via cffi
 pygments==2.7.1
     # via rich
-pynacl==1.4.0
+pynacl==1.6.2
     # via paramiko
 pyparsing==2.4.7
     # via packaging
@@ -166,7 +166,6 @@ six==1.15.0
     #   lunr
     #   packaging
     #   pip-tools
-    #   pynacl
     #   python-dateutil
     #   websocket-client
 tabulate==0.8.7
