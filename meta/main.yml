@@ -2,6 +2,8 @@
 galaxy_info:
   author: Larry Smith Jr.
   description: Ansible role to install/configure cloud-init
+  role_name: cloud_init
+  namespace: mrlesmithjr
   license: MIT
   min_ansible_version: 2.8
 
