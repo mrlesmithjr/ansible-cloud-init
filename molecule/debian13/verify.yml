@@ -1,0 +1,22 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Gather installed packages
+      ansible.builtin.package_facts:
+
+    - name: Gather services
+      ansible.builtin.service_facts:
+
+    - name: Stat /etc/cloud/cloud.cfg
+      ansible.builtin.stat:
+        path: "/etc/cloud/cloud.cfg"
+      register: _cloud_cfg
+
+    - name: Assert cloud-init is installed, enabled and configured
+      ansible.builtin.assert:
+        that:
+          - "'cloud-init' in ansible_facts.packages"
+          - "ansible_facts.services['cloud-init-main.service'].status == 'enabled'"
+          - "_cloud_cfg.stat.exists"
