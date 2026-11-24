@@ -1,0 +1,13 @@
+---
+- name: Include OS-specific variables.
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_facts['distribution'] + '-' + ansible_facts['distribution_version'] }}.yml"
+    - "{{ ansible_facts['os_family'] + '-' + ansible_facts['distribution_major_version'] }}.yml"
+    - "{{ ansible_facts['os_family'] }}.yml"
+    - "All.yml"
+
+- name: Set the cloud_init_service_name variable.
+  ansible.builtin.set_fact:
+    cloud_init_service_name: "{{ __cloud_init_service_name }}"
+  when: cloud_init_service_name is not defined

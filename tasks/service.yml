@@ -1,6 +1,6 @@
 ---
 - name: service | Enabling cloud-init.service
   service:
-    name: cloud-init.service
+    name: "{{ cloud_init_service_name }}"
     enabled: true
   become: true
